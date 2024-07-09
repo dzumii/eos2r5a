@@ -70,7 +70,7 @@ jobs:
         with:
           timeout_minutes: 10
           max_attempts: 3
-          run: |
+          command: |
             source activate
             echo "Updating metadata to AirTable looking at owner: $USER_NAME"
             wget https://raw.githubusercontent.com/ersilia-os/ersilia/master/.github/scripts/update_metadata_to_airtable.py
@@ -107,7 +107,7 @@ jobs:
         with:
           timeout_minutes: 10
           max_attempts: 3
-          run: |
+          command: |
             source activate
             echo "Sample model id selected: $MODEL_ID"
             ersilia -v fetch $MODEL_ID --repo_path .
