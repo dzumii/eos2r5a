@@ -57,7 +57,7 @@ jobs:
           python --version
           echo "After conda init"
           conda init
-          python -m pip install git+https://github.com/ersilia-os/ersilia.git
+          python -m pip install git+https://github.com/ersilia-os/ersilia.gitt
   
       - name: Update metadata to AirTable
         id: update-metadata-to-airtable
@@ -72,8 +72,6 @@ jobs:
           max_attempts: 3
           command: |
             source activate
-            echo "testing retry"
-            exit 1
             echo "Updating metadata to AirTable looking at owner: $USER_NAME"
             wget https://raw.githubusercontent.com/ersilia-os/ersilia/master/.github/scripts/update_metadata_to_airtable.py
             python3 update_metadata_to_airtable.py $USER_NAME $REPO_NAME $BRANCH $AIRTABLE_API_KEY
