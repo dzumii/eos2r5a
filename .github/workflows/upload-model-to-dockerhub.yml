@@ -124,7 +124,7 @@ jobs:
         if: always()
         run: |
           mkdir -p /home/runner/artifacts/v2_logs
-          ls /home/runner/eos/sessions/session_*/_logs/tmp
+          ls -lR /home/runner/eos/sessions/session_*/_logs/tmp
           sudo cp -r /home/runner/eos/sessions/session_*/_logs/tmp /home/runner/artifacts/v2_logs/
           zip -r /home/runner/artifacts/v2_logs/log_files.zip /home/runner/eos/sessions/session_*/_logs/tmp 
          
@@ -134,7 +134,7 @@ jobs:
         with:
           name: v2-debug-logs
           retention-days: 14
-          path: /home/runner/artifacts/v2_logs/**
+          path: /home/runner/artifacts
 
 # If the test failed build a V1 image and test it with ersilia CLI
 
@@ -193,7 +193,7 @@ jobs:
         with:
           name: v1-debug-logs
           retention-days: 14
-          path: /home/runner/artifacts/v1_logs/**
+          path: /home/runner/artifacts
 
 # Create an issue to track that this model did not work with the V2 image
 
