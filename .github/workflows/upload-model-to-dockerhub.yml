@@ -120,19 +120,19 @@ jobs:
         env:
           PULL_IMAGE: n
 
-      - name: Copy log output for V2
-        if: always()
-        run: |
-          mkdir -p /home/runner/artifacts/v2_logs
-          cp /home/runner/eos/sessions/session_*/_logs/tmp/** /home/runner/artifacts/v2_logs/
+      # - name: Copy log output for V2
+      #   if: always()
+      #   run: |
+      #     mkdir -p /home/runner/artifacts/v2_logs
+      #     cp /home/runner/eos/sessions/session_*/_logs/tmp/** /home/runner/artifacts/v2_logs/
          
-      - name: Upload log output for V2
-        if: always()
-        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb
-        with:
-          name: v2-debug-logs
-          retention-days: 14
-          path: /home/runner/artifacts/v2_logs/**
+      # - name: Upload log output for V2
+      #   if: always()
+      #   uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb
+      #   with:
+      #     name: v2-debug-logs
+      #     retention-days: 14
+      #     path: /home/runner/artifacts/v2_logs/**
 
 # If the test failed build a V1 image and test it with ersilia CLI
 
@@ -177,19 +177,19 @@ jobs:
         env:
           PULL_IMAGE: n
 
-      - name: Copy log output for V1
-        if: steps.testBuiltImageV2.outcome == 'failure'
-        run: |
-          mkdir -p /home/runner/artifacts/v1_logs
-          cp /home/runner/eos/sessions/session_*/_logs/tmp/** /home/runner/artifacts/v1_logs/
+      # - name: Copy log output for V1
+      #   if: steps.testBuiltImageV2.outcome == 'failure'
+      #   run: |
+      #     mkdir -p /home/runner/artifacts/v1_logs
+      #     cp /home/runner/eos/sessions/session_*/_logs/tmp/** /home/runner/artifacts/v1_logs/
          
-      - name: Upload log output for V1
-        if: steps.testBuiltImageV2.outcome == 'failure'
-        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb
-        with:
-          name: v1-debug-logs
-          retention-days: 14
-          path: /home/runner/artifacts/v1_logs/**
+      # - name: Upload log output for V1
+      #   if: steps.testBuiltImageV2.outcome == 'failure'
+      #   uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb
+      #   with:
+      #     name: v1-debug-logs
+      #     retention-days: 14
+      #     path: /home/runner/artifacts/v1_logs/**
 
 # Create an issue to track that this model did not work with the V2 image
 
