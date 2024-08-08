@@ -124,7 +124,7 @@ jobs:
         if: always()
         run: |
           mkdir -p /home/runner/artifacts/v2_logs
-          cp -r /home/runner/eos/sessions/session_*/_logs/tmp/** /home/runner/artifacts/v2_logs/
+          cp -r /home/runner/eos/sessions/session_*/_logs/tmp /home/runner/artifacts/v2_logs/
          
       - name: Upload log output for V2
         if: always()
@@ -181,7 +181,7 @@ jobs:
         if: steps.testBuiltImageV2.outcome == 'failure'
         run: |
           mkdir -p /home/runner/artifacts/v1_logs
-          cp -r /home/runner/eos/sessions/session_*/_logs/tmp/** /home/runner/artifacts/v1_logs/
+          cp -r /home/runner/eos/sessions/session_*/_logs/tmp /home/runner/artifacts/v1_logs/
          
       - name: Upload log output for V1
         if: steps.testBuiltImageV2.outcome == 'failure'
