@@ -12,7 +12,8 @@ jobs:
     if: ${{ github.repository != 'ersilia-os/eos-template' && github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Set up QEMU # https://github.com/docker/setup-qemu-action
+      # https://github.com/docker/setup-qemu-action
+      - name: Set up QEMU 
         uses: docker/setup-qemu-action@v3
       
       # https://github.com/docker/setup-buildx-action
@@ -176,7 +177,7 @@ jobs:
         env:
           PULL_IMAGE: n
 
-       - name: Copy log output for V1
+      - name: Copy log output for V1
         if: steps.testBuiltImageV2.outcome == 'failure'
         run: |
           mkdir -p /home/runner/artifacts/v1_logs
