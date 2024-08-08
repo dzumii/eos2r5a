@@ -127,7 +127,7 @@ jobs:
             ersilia -v api -i inputt.csv
             ersilia close
           
-       - name: Copy log output
+      - name: Copy log output
         if: always()
         run: |
           mkdir -p /home/runner/artifacts
