@@ -11,9 +11,8 @@ jobs:
   upload_model_to_dockerhub:
     if: ${{ github.repository != 'ersilia-os/eos-template' && github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-    steps:
-      # https://github.com/docker/setup-qemu-action 
-      - name: Set up QEMU 
+    steps: 
+      - name: Set up QEMU # https://github.com/docker/setup-qemu-action
         uses: docker/setup-qemu-action@v3
       
       # https://github.com/docker/setup-buildx-action
