@@ -124,7 +124,8 @@ jobs:
         if: always()
         run: |
           mkdir -p /home/runner/artifacts/v2_logs
-          ls -lR /home/runner/eos/sessions/session_*/_logs/tmp
+          ls -lR /home/runner/artifacts/v2_logs
+          ls -lh /home/runner/eos/sessions/session_*/_logs/tmp
           sudo cp -r /home/runner/eos/sessions/session_*/_logs/tmp /home/runner/artifacts/v2_logs/
           zip -r /home/runner/artifacts/v2_logs/log_files.zip /home/runner/eos/sessions/session_*/_logs/tmp 
          
